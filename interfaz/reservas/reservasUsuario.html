@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../imagenes/favicon.png" type="image/x-icon">
+    <title>Reservas</title>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+
+<body>
+
+    <header class="cabecera">
+        <img id="logo-menu" src="../imagenes/logoKanboard.png">
+
+        <nav>
+            <ul class="menu">
+                <li><a href="../pedidos/pedidosUsuario.html">Pedidos</a></li>
+                <li><a href="reservasUsuario.html" class="active">Reservas</a></li>
+                <a id="iconoLogin"><img src="../../imagenes/login.png"></a>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contenido">
+
+        <div class="contenedor">
+            <h2>Hacer Reserva</h2>
+
+            <label for="usuario">Usuario</label><br>
+            <input type="text" id="usuario" name="usuario" required>
+
+            <label for="mesasDisponibles">Mesas disponibles</label><br>
+            <select class="select" id="mesasDisponibles" name="mesasDisponibles">
+                <option value="">Escoge una mesa</option>
+            </select>
+
+            <!-- antes de hacer reserva pedir que logue -->
+
+            <button type="submit" id="botonHacerRserva">Hacer pedido</button>
+        </div>
+
+        <div class="contenedor">
+            <h2>Mis reservas</h2>
+
+            <div class="reservas">
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

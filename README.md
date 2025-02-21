@@ -6,3 +6,5 @@
 #16404D
 #DDA853
 -->
+
+se define constante dotenv, requeire paquete dotenv, antes hanra que instalarlo, dontenv.config

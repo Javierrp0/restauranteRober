@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../imagenes/favicon.png" type="image/x-icon">
+    <title>Pedidos</title>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+
+<body>
+
+    <header class="cabecera">
+        <img id="logo-menu" src="../imagenes/logoKanboard.png">
+
+        <nav>
+            <ul class="menu">
+                <li><a href="pedidosUsuario.html" class="active">Pedidos</a></li>
+                <li><a href="../reservas/reservasUsuario.html">Reservas</a></li>
+                <a id="iconoLogin"><img src="../../imagenes/login.png"></a>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contenido">
+
+        <div class="contenedor">
+            <h2>Hacer Pedido</h2>
+
+            <label for="usuario">Usuario</label><br>
+            <input type="text" id="usuario" name="usuario" required>
+
+            <!-- parte para añadir o quitar plato de la lista, visualizacion-->
+
+            <!-- antes de hacer pedido pedir que logue -->
+
+            <button type="submit" id="botonHacerPedido">Hacer pedido</button>
+        </div>
+
+        <div class="contenedor">
+            <h2>Mis pedidos</h2>
+
+            <div class="pedidos">
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
