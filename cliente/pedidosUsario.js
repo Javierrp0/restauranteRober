@@ -1,24 +1,84 @@
-//PETICION PARA HACER PEDIDO
-
-//PETICION PARA OBTENER MIS PEDIDOS
-
-//peticion para obtener platos
-
 $(document).ready(function () {
-    const apiUrl = "http://127.0.0.1:5000";
+    const apiUrl = "http://localhost:5000";
 
     let platos = [];
     let platosSeleccionados = [];
     let indiceActual = 0;
 
+    //funcion para verificar autenticacion
+    function verificarAutenticacion() {
+        return localStorage.getItem('nombreUsuario') !== null;
+    }
+
+    //funcion para crear pedido
+    $('#botonHacerPedido').on('click', function () {
+        if (!verificarAutenticacion()) {
+            alert("Debes iniciar sesión para hacer un pedido");
+            window.location.href = "../login.html";
+        }
+
+        const propietario = localStorage.getItem('nombreUsuario');
+        const pedido = {
+            propietario: propietario,
+            platos: platosSeleccionados,
+        };
+
+        $.ajax({
+            url: `${apiUrl}/api/usuario/crearPedido`,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(pedido),
+            success: function (data) {
+                alert("Pedido creado con exito");
+                platosSeleccionados = [];
+                actualizarListaSeleccionados();
+            },
+            error: function () {
+                alert("Error al crear el pedido");
+            }
+        });
+    });
+
+    //funcion para obetener pedidos del usuario y añadirlos para la visualizacion
+    function obtenerPedidos() {
+        if (!verificarAutenticacion()) {
+            $('.pedidos').html("<br><p>Debes iniciar sesión para ver tus pedidos</p>");
+            return;
+        }
+
+        const propietario = localStorage.getItem('nombreUsuario');
+
+        $.ajax({
+            url: `${apiUrl}/api/usuario/obtenerPedidos?propietario=${propietario}`,
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                const pedidosHtml = data.map(pedido => {
+                    return `
+                        <div class="pedido">
+                            <h3>Pedido #${pedido.id}</h3>
+                            <p>Platos: ${pedido.platos.map(plato => plato.nombre).join(', ')}</p>
+                            <p>Estado: ${pedido.estado}</p>
+                        </div> <br>
+                    `;
+                }).join('');
+                $('.pedidos').html(pedidosHtml);
+            },
+            error: function () {
+                alert("Error al obtener los pedidos");
+            }
+        });
+    }
+
     //obtiene los platos
     function obtenerPlatos() {
         $.ajax({
-            url: `${apiUrl}/api/platos`,
+            url: `${apiUrl}/api/usuario/obtenerPlatos`,
             method: 'GET',
             dataType: 'json',
             success: function(data) {
                 platos = data;
+                console.log(platos);
                 mostrarPlato(indiceActual);
             },
             error: function() {
@@ -33,7 +93,7 @@ $(document).ready(function () {
             const plato = platos[indice];
             $('.verPlatos').html(`
                 <div class="plato">
-                    <img src="${plato.imagen}" alt="${plato.nombre}">
+                    <img src="${plato.ruta_img}" alt="${plato.nombre}">
                     <h3>${plato.nombre}</h3>
                     <p>Precio: ${plato.precio} €</p>
                     <button class="añadirLista">Añadir a la lista</button>
@@ -84,10 +144,10 @@ $(document).ready(function () {
             platosSeleccionados.splice(indice, 1);
             actualizarListaSeleccionados();
         } else {
-            alert("Por favor, selecciona un plato para quitar.");
+            alert("Por favor, selecciona un plato para quitar");
         }
     });
 
     obtenerPlatos();
-
+    obtenerPedidos();
 });
