@@ -32,6 +32,7 @@ $(document).ready(function () {
                 alert("Pedido creado con exito");
                 platosSeleccionados = [];
                 actualizarListaSeleccionados();
+                obtenerPedidos();
             },
             error: function () {
                 alert("Error al crear el pedido");
@@ -49,20 +50,26 @@ $(document).ready(function () {
         const propietario = localStorage.getItem('nombreUsuario');
 
         $.ajax({
-            url: `${apiUrl}/api/usuario/obtenerPedidos?propietario=${propietario}`,
+            url: `${apiUrl}/api/usuario/obtenerPedidos/${propietario}`,
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                const pedidosHtml = data.map(pedido => {
-                    return `
-                        <div class="pedido">
-                            <h3>Pedido #${pedido.id}</h3>
-                            <p>Platos: ${pedido.platos.map(plato => plato.nombre).join(', ')}</p>
-                            <p>Estado: ${pedido.estado}</p>
-                        </div> <br>
-                    `;
-                }).join('');
-                $('.pedidos').html(pedidosHtml);
+                if (data.length === 0) {
+                    $('.pedidos').html("<br><p>No tienes pedidos actualmente</p>");
+                } else {
+                    const pedidosHtml = data.map(pedido => {
+                        return `
+                        <br>
+                            <div class="pedido">
+                                <p>Pedido #${pedido.id}</p>
+                                <p>Platos: ${pedido.platos.map(plato => plato.nombre).join(', ')}</p>
+                                <p>Estado: ${pedido.estado}</p>
+                            </div>
+                            <div class="linea"></div>
+                        `;
+                    }).join('');
+                    $('.pedidos').html(pedidosHtml);
+                }
             },
             error: function () {
                 alert("Error al obtener los pedidos");
@@ -76,12 +83,12 @@ $(document).ready(function () {
             url: `${apiUrl}/api/usuario/obtenerPlatos`,
             method: 'GET',
             dataType: 'json',
-            success: function(data) {
+            success: function (data) {
                 platos = data;
                 console.log(platos);
                 mostrarPlato(indiceActual);
             },
-            error: function() {
+            error: function () {
                 console.log("Error al obtener los platos");
             }
         });
@@ -93,34 +100,35 @@ $(document).ready(function () {
             const plato = platos[indice];
             $('.verPlatos').html(`
                 <div class="plato">
-                    <img src="${plato.ruta_img}" alt="${plato.nombre}">
-                    <h3>${plato.nombre}</h3>
+                    <div class="navegacion">
+                        <a class="anterior"><img src="../../imagenes/flechaIzq.png"></a>
+                        <img src="${plato.ruta_img}" id="imgPlato" alt="${plato.nombre}">
+                        <a class="siguiente"><img src="../../imagenes/flechaDer.png"></a>
+                    </div>
+                    <p>${plato.nombre}</p>
                     <p>Precio: ${plato.precio} €</p>
                     <button class="añadirLista">Añadir a la lista</button>
-                    <div class="navegacion">
-                        <button class="anterior">⬅️</button>
-                        <button class="siguiente">➡️</button>
-                    </div>
                 </div>
             `);
         }
     }
 
     //funcionalidad para navegar entre platos
-    $(document).on('click', '.siguiente', function() {
+    $(document).on('click', '.siguiente', function () {
         indiceActual = (indiceActual + 1) % platos.length;
         mostrarPlato(indiceActual);
     });
 
-    $(document).on('click', '.anterior', function() {
+    $(document).on('click', '.anterior', function () {
         indiceActual = (indiceActual - 1 + platos.length) % platos.length;
         mostrarPlato(indiceActual);
     });
 
     //funcionalidad para añadir plato a la lista de seleccionados
-    $(document).on('click', '.añadirLista', function() {
+    $(document).on('click', '.añadirLista', function () {
         const platoActual = platos[indiceActual];
         platosSeleccionados.push(platoActual);
+        actualizarListaSeleccionados();
     });
 
     //funcionalida para mostrar la lista de seleccionados en el SELECT
@@ -137,9 +145,9 @@ $(document).ready(function () {
     }
 
     //funcionalidad para quitar plato de la lista de seleccionados
-    $('#quitarPlato').on('click', function() {
+    $('#quitarPlato').on('click', function () {
         const indice = $('#platosYaSeleccionados').val();
-        
+
         if (indice !== "") {
             platosSeleccionados.splice(indice, 1);
             actualizarListaSeleccionados();

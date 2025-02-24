@@ -10,7 +10,7 @@
 <body>
 
     <header class="cabecera">
-        <img id="logo-menu" src="../imagenes/logoKanboard.png">
+        <a href="../index.html"><img id="logo-menu" src="../../imagenes/inicio.png"></a>
 
         <nav>
             <ul class="menu">
@@ -32,12 +32,12 @@
 
             <label for="platosYaSeleccionados">Platos seleccionados</label><br>
 
-            <div>
-                <select class="select" id="platosYaSeleccionados" name="platosYaSeleccionados"></select>
-    
-                <button type="submit" id="quitarPlato">Quitar plato</button>
-            </div>
-            
+            <select class="select" id="platosYaSeleccionados" name="platosYaSeleccionados">
+                <option value="">Escoge un plato</option>
+            </select>
+
+            <button type="submit" id="quitarPlato">Quitar plato</button>
+
             <button type="submit" id="botonHacerPedido">Hacer pedido</button>
         </div>
 

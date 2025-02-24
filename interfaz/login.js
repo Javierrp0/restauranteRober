@@ -4,10 +4,10 @@ $(document).ready(function () {
     $('#botonInciarSesion').on('click', function (event) {
         event.preventDefault();
 
-        const nombreUsuario = $('#nombreUsuario').val().trim();
+        const nombre = $('#nombreUsuario').val().trim();
         const contraseña = $('#contraseña').val().trim();
 
-        if (nombreUsuario === "" || contraseña === "") {
+        if (nombre === "" || contraseña === "") {
             alert("Completa todos los campos");
             return;
         }
@@ -17,14 +17,14 @@ $(document).ready(function () {
             url: `${apiUrl}/api/usuario/iniciarSesion`,
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ nombreUsuario, contraseña }),
+            data: JSON.stringify({nombre, contraseña }),
             success: function (response) {
                 alert(response.mensaje);
                 if (response.exito) {
                     //guarda el nombre de usuario en localStorage
-                    localStorage.setItem('nombreUsuario', nombreUsuario);
+                    localStorage.setItem('nombreUsuario', nombre);
                     //redirige a los pedidos
-                    window.location.href = "pedidosUsuario.html";
+                    window.location.href = "index.html";
                 }
             },
             error: function (error) {

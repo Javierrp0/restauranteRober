@@ -77,20 +77,25 @@ $(document).ready(function () {
         const propietario = localStorage.getItem('nombreUsuario');
 
         $.ajax({
-            url: `${apiUrl}/api/usuario/obtenerReservas?propietario=${propietario}`,
+            url: `${apiUrl}/api/usuario/obtenerReservas/${propietario}`,
             method: 'GET',
             dataType: 'json',
             success: function (data) {
-                const reservasHtml = data.map(reserva => {
-                    return `
-                        <div class="reserva">
-                            <h3>Reserva #${reserva.id}</h3>
-                            <p>Mesa: ${reserva.mesa}</p>
-                            <p>Estado: ${reserva.estado}</p>
-                        </div> <br>
-                    `;
-                }).join('');
-                $('.reservas').html(reservasHtml);
+                if (data.length === 0) {
+                    $('.reservas').html("<br><p>No tienes reservas actualmente</p>");
+                } else {
+                    const reservasHtml = data.map(reserva => {
+                        return `
+                            <br>
+                            <div class="reserva">
+                                <p>Mesa: ${reserva.mesa}</p>
+                                <p>Estado: ${reserva.estado}</p>
+                            </div>
+                            <div class="linea"></div>
+                        `;
+                    }).join('');
+                    $('.reservas').html(reservasHtml);
+                }
             },
             error: function () {
                 alert("Error al obtener las reservas");

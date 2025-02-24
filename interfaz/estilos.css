@@ -179,10 +179,11 @@
 }
 
 .contenidoIndex {
+    height: 85%;
     background-color: #f2f2f2;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
 }
 
 .contenidoIndex h1 {
@@ -233,14 +234,9 @@
 
 .contenedorIndex {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 30px;
-    margin-left: 100px;
-    padding: 50px;
+    margin-top: 100px;
     width: 80%;
-    align-items: stretch;
-    gap: 75px;
+    gap: 125px;
 }
 
 .contenedor {
@@ -266,7 +262,7 @@
 
 .contenedor input,
 select {
-    width: 300px;
+    width: 450px;
     margin-top: 10px;
     padding: 10px;
     font-family: "Staatliches", sans-serif;
@@ -274,6 +270,7 @@ select {
     font-style: normal;
     border: 1px solid #fff;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 .contenedor button {
@@ -288,4 +285,59 @@ select {
     font-size: 18px;
     padding: 20px;
     margin-top: 30px;
+}
+
+#quitarPlato{
+    width: 450px;
+}
+
+.plato{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.plato a,button {
+    cursor: pointer;
+}
+
+.navegacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 60px;
+    align-items: center;
+    margin: 20px;
+}
+
+.navegacion img{
+    width: 20px;
+    height: 20px;
+}
+
+#imgPlato{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.pedido, .reserva{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+} 
+
+.pedido p{
+    margin-bottom: 10px;
+}
+
+.linea{
+    border-bottom: 2px solid #000;
+    margin-top: 20px;
 }
