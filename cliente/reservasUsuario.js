@@ -87,11 +87,11 @@ $(document).ready(function () {
                     const reservasHtml = data.map(reserva => {
                         return `
                             <br>
+                            <div class="linea"></div>
                             <div class="reserva">
                                 <p>Mesa: ${reserva.mesa}</p>
                                 <p>Estado: ${reserva.estado}</p>
                             </div>
-                            <div class="linea"></div>
                         `;
                     }).join('');
                     $('.reservas').html(reservasHtml);

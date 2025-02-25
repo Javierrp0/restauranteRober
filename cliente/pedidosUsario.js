@@ -60,12 +60,12 @@ $(document).ready(function () {
                     const pedidosHtml = data.map(pedido => {
                         return `
                         <br>
+                            <div class="linea"></div>
                             <div class="pedido">
                                 <p>Pedido #${pedido.id}</p>
                                 <p>Platos: ${pedido.platos.map(plato => plato.nombre).join(', ')}</p>
                                 <p>Estado: ${pedido.estado}</p>
                             </div>
-                            <div class="linea"></div>
                         `;
                     }).join('');
                     $('.pedidos').html(pedidosHtml);
@@ -80,12 +80,11 @@ $(document).ready(function () {
     //obtiene los platos
     function obtenerPlatos() {
         $.ajax({
-            url: `${apiUrl}/api/usuario/obtenerPlatos`,
+            url: `${apiUrl}/api/obtenerPlatos`,
             method: 'GET',
             dataType: 'json',
             success: function (data) {
                 platos = data;
-                console.log(platos);
                 mostrarPlato(indiceActual);
             },
             error: function () {
@@ -102,7 +101,7 @@ $(document).ready(function () {
                 <div class="plato">
                     <div class="navegacion">
                         <a class="anterior"><img src="../../imagenes/flechaIzq.png"></a>
-                        <img src="${plato.ruta_img}" id="imgPlato" alt="${plato.nombre}">
+                        <img src="${plato.url_imagen}" id="imgPlato" alt="${plato.nombre}">
                         <a class="siguiente"><img src="../../imagenes/flechaDer.png"></a>
                     </div>
                     <p>${plato.nombre}</p>

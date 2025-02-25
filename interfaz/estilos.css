@@ -116,6 +116,10 @@
     text-decoration: none;
 }
 
+#logo-menu{
+    margin-left: 20px;
+}
+
 .menu {
     display: flex;
     list-style: none;
@@ -241,6 +245,7 @@
 
 .contenedor {
     width: 100%;
+    height: 100%;
     margin: 60px;
     padding: 40px;
     font-family: "Staatliches", sans-serif;
@@ -262,8 +267,8 @@
 
 .contenedor input,
 select {
-    width: 450px;
-    margin-top: 10px;
+    width: 350px;
+    margin-top: 30px;
     padding: 10px;
     font-family: "Staatliches", sans-serif;
     font-weight: 400;
@@ -282,13 +287,13 @@ select {
     font-family: "Staatliches", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 18px;
+    font-size: 20px;
     padding: 20px;
     margin-top: 30px;
 }
 
 #quitarPlato{
-    width: 450px;
+    width: 350px;
 }
 
 .plato{
@@ -321,8 +326,8 @@ select {
 }
 
 #imgPlato{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 10px;
 }
 
@@ -339,5 +344,13 @@ select {
 
 .linea{
     border-bottom: 2px solid #000;
-    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.seleccion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }
