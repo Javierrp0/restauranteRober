@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    const apiUrl = "http://localhost:5000";
+    // const apiUrl = "http://localhost:5000";
+    const apiUrl = "https://api-restaurante-robert-sand.vercel.app";
 
     let platos = [];
     let platosSeleccionados = [];
