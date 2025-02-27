@@ -25,7 +25,7 @@ $(document).ready(function () {
                     //guarda el nombre de usuario en localStorage
                     localStorage.setItem('nombreUsuario', nombre);
                     //redirige a los pedidos
-                    window.location.href = "index.html";
+                    window.location.href = "../index.html";
                 }
             },
             error: function (error) {
