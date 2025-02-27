@@ -15,7 +15,7 @@ $(document).ready(function () {
     $('#botonHacerPedido').on('click', function () {
         if (!verificarAutenticacion()) {
             alert("Debes iniciar sesión para hacer un pedido");
-            window.location.href = "../login.html";
+            window.location.href = "../login/login.html";
         }
 
         const propietario = localStorage.getItem('nombreUsuario');
