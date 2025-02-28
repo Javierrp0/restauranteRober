@@ -1,11 +1,91 @@
-En la pantalla principal, se presentan dos recuadros que permiten navegar hacia las secciones de Reservas y Pedidos. También se puede acceder a estas secciones desde la cabecera, donde además se encuentran un ícono para regresar a la página principal y otro para iniciar sesión.
+# Sistema de Reservas y Pedidos  
 
-Reservas
-En la sección de Reservas, es posible realizar una reserva sin necesidad de iniciar sesión. Solo se requiere proporcionar un nombre y seleccionar un número de mesa disponible. Sin embargo, al estar logueado, se podrán visualizar las reservas realizadas, mostrando el número de mesa y el estado de la reserva. Si el administrador marca una reserva como completada, esta dejará de estar visible para el usuario.
+Este proyecto permite gestionar reservas y pedidos de manera sencilla a través de una interfaz web. A continuación, se detallan las funcionalidades disponibles en cada sección de la aplicación.  
 
-Pedidos
-En la sección de Pedidos, se pueden realizar pedidos y visualizar los pedidos previamente realizados por el usuario. Al revisar un pedido, se muestran el ID, los platos solicitados y el estado del pedido, que se actualizará conforme el administrador gestione el proceso.
+---
 
-Para realizar un pedido, primero se despliegan los platos disponibles, con la opción de navegar entre ellos utilizando flechas laterales. Además, se incluye un selector que muestra los platos añadidos al pedido, permitiendo eliminarlos si es necesario.
+## Tecnologías Utilizadas  
+- **Frontend:**  
+  - HTML  
+  - CSS  
+  - JavaScript  
 
-Antes de confirmar el pedido, se solicitará al usuario que inicie sesión si no lo ha hecho previamente. En caso de no estar logueado, se redirigirá a la página de inicio de sesión, donde se debe ingresar un nombre y una contraseña. Si el usuario no existe, se creará una nueva cuenta automáticamente. Ahora ya nos permitirá crear uan cuenta. 
+- **Backend:**  
+  - Express (Node.js)  
+
+- **Base de Datos:**  
+  - MongoDB  
+
+- **Despliegue:**  
+  - Vercel  
+
+---
+
+## Pantalla Principal  
+En la pantalla principal, se encuentran:  
+- **Dos recuadros** para navegar hacia:  
+  - **Reservas**  
+  - **Pedidos**  
+- **Cabecera** con:  
+  - Ícono para regresar a la página principal.  
+  - Ícono para iniciar sesión.  
+
+---
+
+## Reservas  
+### Funcionalidades  
+- Se puede realizar una reserva **sin necesidad de iniciar sesión**.  
+- Al realizar una reserva, se solicita:  
+  - **Nombre**  
+  - **Número de mesa disponible**  
+- Si el usuario **ha iniciado sesión**, podrá:  
+  - Ver sus reservas realizadas, incluyendo:  
+    - Número de mesa.  
+    - Estado de la reserva.  
+  - Si el **administrador completa la reserva**, esta dejará de estar visible para el usuario.  
+
+---
+
+## Pedidos  
+### Funcionalidades  
+- Se pueden realizar pedidos y visualizar los pedidos realizados por el usuario.  
+- Al visualizar un pedido, se muestra:  
+  - **ID del pedido**  
+  - **Platos solicitados**  
+  - **Estado del pedido**, el cual se actualizará conforme el administrador gestione el proceso.  
+
+### Proceso para Realizar un Pedido  
+1. **Visualización de Platos:**  
+   - Se despliegan los platos disponibles.  
+   - Se puede navegar entre ellos utilizando **flechas laterales**.  
+2. **Selección de Platos:**  
+   - Se incluye un **selector** que muestra los platos añadidos al pedido.  
+   - Se pueden **eliminar** platos del pedido desde el selector.  
+3. **Confirmación de Pedido:**  
+   - Para confirmar el pedido, el usuario **debe iniciar sesión**.  
+   - Si no ha iniciado sesión:  
+     - Se redirigirá a la página de **Login**, donde se solicitará:  
+       - **Nombre de usuario**  
+       - **Contraseña**  
+     - Si el usuario **no existe**, se creará una nueva cuenta automáticamente.  
+
+---
+
+## Instalación y Ejecución  
+1. Clona el repositorio:  
+    ```bash
+    git clone <url-del-repositorio>
+    cd <nombre-del-proyecto>
+    ```
+2. Instala las dependencias:  
+    ```bash
+    npm install
+    ```
+3. Inicia la aplicación:  
+    ```bash
+    npm start
+    ```
+---
+
+## ☁️ Despliegue  
+Este proyecto está desplegado en **Vercel**, lo que permite un acceso rápido y escalable a la aplicación.  
