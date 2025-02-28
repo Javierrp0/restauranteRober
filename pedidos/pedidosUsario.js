@@ -101,9 +101,9 @@ $(document).ready(function () {
             $('.verPlatos').html(`
                 <div class="plato">
                     <div class="navegacion">
-                        <a class="anterior"><img src="../../imagenes/flechaIzq.png"></a>
+                        <a class="anterior"><img src="../imagenes/flechaIzq.png"></a>
                         <img src="${plato.url_imagen}" id="imgPlato" alt="${plato.nombre}">
-                        <a class="siguiente"><img src="../../imagenes/flechaDer.png"></a>
+                        <a class="siguiente"><img src="../imagenes/flechaDer.png"></a>
                     </div>
                     <p>${plato.nombre}</p>
                     <p>Precio: ${plato.precio} €</p>

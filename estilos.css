@@ -99,6 +99,12 @@
     cursor: pointer;
 }
 
+.login button:hover {
+    scale: 1.02;
+    background-color: #0a163a;
+    transition: 0.5s;
+}
+
 /** Menu navegacion **/
 
 .cabecera {
@@ -290,6 +296,12 @@ select {
     font-size: 20px;
     padding: 20px;
     margin-top: 30px;
+}
+
+.contenedor button:hover {
+    scale: 1.02;
+    background-color: #0a163a;
+    transition: 0.5s;
 }
 
 #quitarPlato{
